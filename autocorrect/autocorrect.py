@@ -9,20 +9,19 @@ my plan currently:
 	- if so, we're done
 	- if not...
 - determine closest fits for simple operations (letter swaps, missing letter, extra letter, wrong letter)
-	- THIS MIGHT BE TRICKY
-	- multiple changes-- guess?? better solution (please)??
-	- FOR NOW we'll just do one change.
+	- multiple changes-- bruteforce?? better solution (please)??
 - guess the intended word based on which requires the fewest changes
-	- THIS IS ALSO GOING TO BE TRICKY
 - if there's a tie, pick the one that is the most commonly used
-	- this will require a very big table of word uses
-
 
 - future functionality:
 	- look at two-word clusters (three-word? ???) and see if there is a one-letter change that
 	makes the resultant change MUCH MORE PROBABLE
 	but i'm guessing frequency tables for two-word clusters are much harder to find...
 	maybe just examine some huge repository of modern english? the internet??? maybe this exists.
+	- recurse n layers deep for your choice of n
+	(but honestly past 2 you're going to get some real gibberish getting guessed)
+	- make it follow me around through all my windows and apps, making changes live
+	- dynamically edit-able library
 """
 
 from string import ascii_lowercase
@@ -43,7 +42,8 @@ def populateDict():
 # - adding a missing letter anywhere in the wrod
 # - subtracting a letter anywhere in the wrod
 # - swapping out any one letter for a replacement
-# currently it only does one iteration because 2+ iteration make number go up big fast :(
+# currently functional for one or two iterations
+# starts with one, does two if it hasnt found a viable candidate
 def spelChek(wrod, iteration = 0):
 	# check for dumb shit
 	wrod = wrod.lower()
@@ -59,6 +59,7 @@ def spelChek(wrod, iteration = 0):
 		tempWrod = wrod[:i] + wrod[i+1] + wrod[i] + wrod[i+2:]
 		if tempWrod in dict:
 			candidates.append(tempWrod)
+		# these conditionals apply on the second (nth?) loop
 		if iteration == 1:
 			lastDitch = spelChek(tempWrod, 2)
 			if lastDitch in dict:
@@ -96,7 +97,7 @@ def spelChek(wrod, iteration = 0):
 				if lastDitch in dict:
 					candidates.append(lastDitch)
 	
-	# pick the best candidato tomato
+	# iterate once (technically recurse) if we havent found a good candidate
 	if not candidates:
 		if iteration == 0:
 			return spelChek(wrod, 1)
@@ -104,6 +105,7 @@ def spelChek(wrod, iteration = 0):
 	
 	#print(candidates) # uncomment this if you want to see the set of candidate words
 	
+	# return the best (most popular) viable candidate
 	bestCandidate = None
 	popularity = 0
 	for c in candidates:
