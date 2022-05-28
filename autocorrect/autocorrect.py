@@ -49,8 +49,7 @@ def spelChek(wrod, iteration = 0):
 	wrod = wrod.lower()
 	for letter in wrod:
 		if letter not in ascii_lowercase:
-			print("NOO!!!!! VEWY BADD!!!!! TWY AGIAN!!!")
-			return None
+			return wrod
 	
 	candidates = []
 	
@@ -120,17 +119,24 @@ def spelChek(wrod, iteration = 0):
 def main():
 	populateDict()
 
-	print("dis progam fixx wrods, leters olny plz NOO NUBMER!!!")
+	print("dis progam fixx wrods (snetences an nubmers OAKY!)")#, leters olny plz NOO NUBMER!!!")
 	
 	while True:
-		wrod = input("gib wrod: ")
+		snetence = input("gib wrod(s): ")
 		
-		if wrod in dict or not wrod:
-			word = wrod
-		else:
-			word = spelChek(wrod)
+		wrods = snetence.split()
+		words = []
+		for wrod in wrods:
+			wrod = wrod.lower()
+			if wrod in dict or not wrod:
+				words.append(wrod)
+			else:
+				words.append(spelChek(wrod))
 		
-		print("your wlecum:", word, "\n")
+		print("your wlecum: ", end = "")
+		for word in words:
+			print(word, end = " ")
+		print("\n")
 	
 if __name__ == "__main__":
 	main()
