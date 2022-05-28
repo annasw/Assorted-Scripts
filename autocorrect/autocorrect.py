@@ -83,6 +83,8 @@ def spelChek(wrod):
 	# pick the best candidato tomato
 	if not candidates: return wrod
 	
+	#print(candidates) # uncomment this if you want to see the set of candidate words
+	
 	bestCandidate = None
 	popularity = 0
 	for c in candidates:
