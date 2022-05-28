@@ -44,7 +44,7 @@ def populateDict():
 # - subtracting a letter anywhere in the wrod
 # - swapping out any one letter for a replacement
 # currently it only does one iteration because 2+ iteration make number go up big fast :(
-def spelChek(wrod):
+def spelChek(wrod, iteration = 0):
 	# check for dumb shit
 	wrod = wrod.lower()
 	for letter in wrod:
@@ -59,6 +59,10 @@ def spelChek(wrod):
 		tempWrod = wrod[:i] + wrod[i+1] + wrod[i] + wrod[i+2:]
 		if tempWrod in dict:
 			candidates.append(tempWrod)
+		if iteration == 1:
+			lastDitch = spelChek(tempWrod, 2)
+			if lastDitch in dict:
+				candidates.append(lastDitch)
 	
 	#addition
 	for i in range(len(wrod)+1):
@@ -66,12 +70,20 @@ def spelChek(wrod):
 			tempWrod = wrod[:i] + letter + wrod[i:]
 			if tempWrod in dict:
 				candidates.append(tempWrod)
+			if iteration == 1:
+				lastDitch = spelChek(tempWrod, 2)
+				if lastDitch in dict:
+					candidates.append(lastDitch)
 	
 	#removal
 	for i in range(len(wrod)):
 		tempWrod = wrod[:i] + wrod[i+1:]
 		if tempWrod in dict:
 			candidates.append(tempWrod)
+		if iteration == 1:
+			lastDitch = spelChek(tempWrod, 2)
+			if lastDitch in dict:
+				candidates.append(lastDitch)
 	
 	#replacement
 	for i in range(len(wrod)):
@@ -79,9 +91,16 @@ def spelChek(wrod):
 			tempWrod = wrod[:i] + letter + wrod[i+1:]
 			if tempWrod in dict:
 				candidates.append(tempWrod)
+			if iteration == 1:
+				lastDitch = spelChek(tempWrod, 2)
+				if lastDitch in dict:
+					candidates.append(lastDitch)
 	
 	# pick the best candidato tomato
-	if not candidates: return wrod
+	if not candidates:
+		if iteration == 2:
+			return wrod
+		return spelChek(wrod, 1)
 	
 	#print(candidates) # uncomment this if you want to see the set of candidate words
 	
