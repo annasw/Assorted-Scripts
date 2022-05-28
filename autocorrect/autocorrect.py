@@ -46,7 +46,6 @@ def populateDict():
 # starts with one, does two if it hasnt found a viable candidate
 def spelChek(wrod, iteration = 0):
 	# check for dumb shit
-	wrod = wrod.lower()
 	for letter in wrod:
 		if letter not in ascii_lowercase:
 			return wrod
