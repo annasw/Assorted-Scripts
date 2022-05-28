@@ -28,7 +28,8 @@ from string import ascii_lowercase
 from time import time # timing (optional)
 # it's about 0.001s for a single one-off word,
 # 0.06 for a single 2-off word,
-# a little over 0.2 max for a sentence with all words off by two
+# 0.001s for a sentence with all words off by one,
+# a little over 0.2 for a sentence with all words off by two
 
 #make dictionary
 #keys: words, values: frequency (just an integer)
