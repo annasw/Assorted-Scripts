@@ -31,7 +31,7 @@ from string import ascii_lowercase
 #keys: words, values: frequency (just an integer)
 dict = {}
 def populateDict():
-	f = open("english-words-master\english.txt") # from https://github.com/nachocab/words-by-frequency
+	f = open("english.txt") # from https://github.com/nachocab/words-by-frequency
 	for line in f.readlines():
 		contents = line.split()
 		dict[contents[1]] = int(contents[0])
