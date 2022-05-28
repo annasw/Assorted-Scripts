@@ -25,6 +25,10 @@ my plan currently:
 """
 
 from string import ascii_lowercase
+from time import time # timing (optional)
+# it's about 0.001s for a single one-off word,
+# 0.06 for a single 2-off word,
+# a little over 0.2 max for a sentence with all words off by two
 
 #make dictionary
 #keys: words, values: frequency (just an integer)
@@ -125,16 +129,19 @@ def main():
 		
 		wrods = snetence.split()
 		words = []
+		start = time()
 		for wrod in wrods:
 			wrod = wrod.lower()
 			if wrod in dict or not wrod:
 				words.append(wrod)
 			else:
 				words.append(spelChek(wrod))
+		end = time()
 		
 		print("your wlecum: ", end = "")
 		for word in words:
 			print(word, end = " ")
+		#print("\ndone in", end-start) # uncomment for timing
 		print("\n")
 	
 if __name__ == "__main__":
