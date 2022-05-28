@@ -98,9 +98,9 @@ def spelChek(wrod, iteration = 0):
 	
 	# pick the best candidato tomato
 	if not candidates:
-		if iteration == 2:
-			return wrod
-		return spelChek(wrod, 1)
+		if iteration == 0:
+			return spelChek(wrod, 1)
+		return wrod
 	
 	#print(candidates) # uncomment this if you want to see the set of candidate words
 	
