@@ -1,7 +1,7 @@
 # Assorted-Scripts
-Sometimes I write little scripts with no real reason behind doing so. I'll put those here.
+Sometimes I write little scripts just for fun. I'll put those here.
 
-<b>Autocorrect</b> -- An autocorrect function I wrote with slightly more robustness (robostity?) than Microsoft managed for Word.
+<b>Autocorrect</b> -- An autocorrect function I wrote with more robustness (robostity?) than Microsoft managed for Word. It can take single words or sentences. Possible corrections it can make are adjacent swaps (e.g. "wrods" -> "words"), adding missing letters ("wrds"), removing surplus letters ("worsds"), and replacing erroneous letters ("wosds"). It will attempt changes up to two steps away if needed (e.g. "wrsds" -> "words").
 
 <b>binarySearch.py</b> -- I wrote this in response to running across <a href="https://reprog.wordpress.com/2010/04/19/are-you-one-of-the-10-percent/">this old article</a>.
 
