@@ -26,6 +26,7 @@
 import string
 
 words = []
+# oh yeah, you need this text file. it's somewhere around here. i'll upload it to this folder.
 with open("english-words-master\words.txt") as f:
 	words = [x.strip() for x in f.readlines()]
 
