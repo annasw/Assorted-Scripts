@@ -1,3 +1,9 @@
+# okay
+# uhh
+# i think my goal here was to produce all possible team names for the rwby team from rwby
+# the best is obviously rawboy
+# other strong contenders: barrow-boy, owerby, and iwberry
+
 import re
 
 
