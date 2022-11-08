@@ -20,10 +20,18 @@ def spr(c,a,y,t,i):
 	return spr
 
 while True:
-	c = int(input("completions > "))
-	a = int(input("attempts    > "))
-	y = int(input("yards       > "))
-	t = int(input("tds         > "))
-	i = int(input("ints        > "))
-	print("upr is", upr(c,a,y,t,i))
-	print("standard pr would be", spr(c,a,y,t,i))
+	try:
+		c = int(eval(input("completions > ")))
+		a = int(eval(input("attempts    > ")))
+		y = int(eval(input("yards       > ")))
+		t = int(eval(input("tds         > ")))
+		i = int(eval(input("ints        > ")))
+		print("upr is", upr(c,a,y,t,i))
+		print("standard pr would be", spr(c,a,y,t,i))
+	except:
+		print("Error in input")
+		print("Try again?")
+		response = input("y/n> ")
+		if response != "y":
+			break
+		print("")
