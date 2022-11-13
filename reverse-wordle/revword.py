@@ -34,7 +34,6 @@ def letterGenerator(version = "actual"):
 
 def play(length, wordlist):
 	answerString = ["_" for x in range(length)]
-	print("")
 	for i in answerString: print(i, end = " ")
 	print("")
 	for n in range(length):
